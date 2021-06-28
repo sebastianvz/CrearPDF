@@ -1,0 +1,33 @@
+# Don't track content of these folders #
+###################
+ImpresionPDF/obj/
+ImpresionPDF/bin/
+ImpresionPDF/Properties/
+.vs/
+ImpresionPDF/.vs/
+
+# Compiled source #
+###################
+*.sln
+*.sou
+*.cache
+
+# Packages #
+############
+# it's better to unpack these files and commit the raw source
+# git has its own built in compression methods
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Compiled source #
+###################
+*.dll
+*.pdb
+*.xml
+
