@@ -206,7 +206,7 @@ namespace ImpresionPDF
 
                     var dpi = 96;
                     var ancho = (8.0f * dpi) / 2.54f;
-                    var alto = (15.0f * dpi) / 2.54f;
+                    var alto = (25.0f * dpi) / 2.54f;
 
                     //Tamaño en puntos
                     pdfDocument.SetDefaultPageSize(new PageSize(new Rectangle(ancho, alto)));
