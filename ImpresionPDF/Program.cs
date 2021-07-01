@@ -498,15 +498,35 @@ namespace ImpresionPDF
 
                     pdfDocument.Close();
                 }
+                //********RawPrint********//
+                //// El nombre de la impresora que desea utilizar.
+                //var impresora = ConfigurationManager.AppSettings["Impresora"];
 
-                // El nombre de la impresora que desea utilizar.
-                var impresora = ConfigurationManager.AppSettings["Impresora"];
+                //// Cree una instancia de la impresora
+                //IPrinter printer = new Printer();
 
-                // Cree una instancia de la impresora
-                IPrinter printer = new Printer();
+                //// Imprime el archivo
+                //printer.PrintRawFile(impresora, rutaArchivo, Path.GetFileNameWithoutExtension(rutaArchivo));
 
-                // Imprime el archivo
-                printer.PrintRawFile(impresora, rutaArchivo, Path.GetFileNameWithoutExtension(rutaArchivo));
+
+                //********PdfiumViewer********//
+                // Create the printer settings for our printer
+                var printerSettings = new PrinterSettings
+                {
+                    PrinterName = ConfigurationManager.AppSettings["Impresora"],
+                    Copies = 1
+                };
+
+                // Now print the PDF document
+                using (var pdfiumViewerDocument = PdfiumViewer.PdfDocument.Load(rutaArchivo))
+                {
+                    using (var printDocument = pdfiumViewerDocument.CreatePrintDocument())
+                    {
+                        printDocument.PrinterSettings = printerSettings;
+                        printDocument.PrintController = new StandardPrintController();
+                        printDocument.Print();
+                    }
+                }
             }
             catch (Exception e)
             {
